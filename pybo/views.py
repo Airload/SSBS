@@ -7,12 +7,10 @@ def index(request):
     return render(request, 'index.html')
 
 def map(request):
-    return render(request, 'map.html')
+    return render(request, 'pybo/map.html')
 
 def data(request):
-    return render(request, 'data.html')
-
-
+    return render(request, 'pybo/data.html')
 
 def files(request):
     return render(request, 'etc/files_list.html')
