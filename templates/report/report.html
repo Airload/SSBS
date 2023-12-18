@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px; /* 테이블 위 여백 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+th, td {
+    border: 1px solid #ddd; /* 테두리 */
+    padding: 12px; /* 셀 안의 여백 */
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* 마우스 호버 시 배경색 변경 */
+}
+</style>
+<div class="container">
+    {% include 'etc/sidebar.html' %}
+    {% include 'etc/navbar.html' %}
+
+    <h2 style="text-align: center;">세상 Report</h2>
+
+
+    <div class="row g-4 py-2 row-cols-6 text-center justify-content-end">
+        <div class="btn-group">
+            <button class="btn btn-secondary dropdown-toggle login-btm" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                읍면동
+            </button>
+            <ul class="dropdown-menu">
+                {% for gu, gu1 in zipped_lists %}
+                <li><a class="dropdown-item" href="{{ gu1 }}" onclick="goLink(this.href);return false;">{{ gu }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+      </div>
+    
+    <h2>Rank Information</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>읍면동</th>
+                <th>인구순위</th>
+                <th>총매출순위</th>
+                <th>최다연령층</th>
+                <th>최고매출업종</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for 읍면동, info in rank_info_dict.items %}
+            <tr>
+                <td>{{ 읍면동 }}</td>
+                <td>{{ info.순위_인구 }}위</td>
+                <td>{{ info.순위_총매출 }}위</td>
+                <td>{{ info.최다연령층 }}</td>
+                <td>{{ info.최고매출업종 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% include 'etc/footer.html' %}
+</div>
+
+</div>
+
+
+
+{% endblock %}

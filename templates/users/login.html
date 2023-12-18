@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container ">
+    {% include 'etc/sidebar.html' %}
+{% include 'etc/navbar.html' %}
+
+
+<div class="container">
+<form name="flogin" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+
+                <div class="col-lg-12 login-title">
+                    Login-Box
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form>
+                            <div class="login-form-group">
+                                <label class="form-control-label" >USERNAME</label>
+                                <input type="text" class="form-control login-input-text" name="member_id" required>
+                            </div>
+                            <div class="login-form-group">
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" class="form-control login-input-pw" name="passwd" required>
+                            </div>
+
+                        <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-6 signup-btm signup-button">
+                            <button type="button" class="btn btn-outline-primary" onclick="location.href='/users/register/'">회원가입</button>
+                            </div>
+                            <div class="col-lg-6 login-btm login-button">
+                            <button type="submit" class="btn btn-outline-primary" onclick="loginChk()">LOGIN</button>
+                            </div>
+
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+{% include 'etc/footer.html' %}
+</div>
+
+<script>
+function loginChk() {
+    var form = document.flogin;
+    if (form.member_id.value=="") {
+        alert("회원 아이디를 입력해 주십시오.");
+        form.member_id.focus();
+        return;
+    }
+    if (form.passwd.value=="") {
+        alert("비밀번호를 입력해 주십시오.");
+        form.passwd.focus();
+        return;
+    }
+    form.action = "/users/login/";
+    form.submit();
+}
+</script>
+
+{% if message %}
+<script>alert('{{ message }}');</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    {% include 'etc/sidebar.html' %}
+    {% include 'etc/navbar.html' %}
+    <h2 style="text-align: center;">세상 Map</h2>
+
+
+    <iframe frameborder='0' scrolling="no" src="https://woghd.shinyapps.io/RSShiny/" style="width:100%; height:850px ">
+    </iframe>
+
+
+
+    {% include 'etc/footer.html' %}
+</div>
+{% endblock %}

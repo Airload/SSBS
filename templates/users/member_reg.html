@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        {% include 'etc/sidebar.html' %}
+        {% include 'etc/navbar.html' %}
+    </div>
+
+    <form name="f1" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-2"></div>
+                <div class="col-lg-6 col-md-8 login-box">
+                    <div class="col-lg-12 login-title">
+                        Signup
+                    </div>
+                    <div class="col-lg-12 login-form">
+                        <div class="login-form-group">
+                            <label class="form-control-label">ID</label>
+                            <input type="text" class="form-control login-input-text" name="member_id" required>
+                        </div>
+                        <div class="login-form-group">
+                            <label class="form-control-label">PASSWORD</label>
+                            <input type="password" class="form-control login-input-pw" name="passwd" required>
+                        </div>
+                        <div class="login-form-group">
+                            <label class="form-control-label">NAME</label>
+                            <input type="text" class="form-control login-input-text" name="name" required>
+                        </div>
+                        <div class="login-form-group">
+                            <label class="form-control-label">Email</label>
+                            <input type="text" class="form-control login-input-text" name="email" required>
+                        </div>
+                        <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-6 login-btm login-button">
+                                <button type="submit" class="btn btn-outline-primary" onclick="memReg(event)">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+            {% include 'etc/footer.html' %}
+        </div>
+    </form>
+<script>
+    function memReg(event) {
+        event.preventDefault();  // 기본 동작 방지
+
+        var form = document.f1;
+        if (form.member_id.value == "") {
+            alert("아이디를 입력해 주십시오.");
+            form.member_id.focus();
+            return;
+        }
+        if (form.passwd.value == "") {
+            alert("비밀번호를 입력해 주십시오.");
+            form.passwd.focus();
+            return;
+        }
+        if (form.name.value == "") {
+            alert("이름을 입력해 주십시오.");
+            form.name.focus();
+            return;
+        }
+        if (form.email.value == "") {
+            alert("이메일을 입력해 주십시오.");
+            form.email.focus();
+            return;
+        }
+
+        // 메시지 대신 이 부분에서 직접 alert 창을 띄우도록 변경
+        alert("회원가입이 완료되었습니다.");
+
+        form.action = "/users/register/";
+        form.submit();
+    }
+</script>
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert('{{ message|escapejs }}');
+            </script>
+        {% endfor %}
+    {% endif %}
+
+
+    {% include 'etc/footer.html' %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    {% include 'etc/sidebar.html' %}
+    {% include 'etc/navbar.html' %}
+
+    <h1>Q & A</h1>
+
+    <br>
+
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" style="width: 25%;" class="text-center">제목</th>
+                    <th scope="col" style="width: 30%;" class="text-center">내용</th>
+                    <th scope="col" style="width: 8%;" class="text-center">작성자</th>
+                    <th scope="col" style="width: 25%;" class="text-center">작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <th scope="row" class="text-center">{{post.pk}}</th>
+                    <td class="truncate-title text-center" onClick="location.href='{% url 'post_detail' pk=post.pk|safe %}'">{{ post.title }}</td>
+                    <td class="truncate-content text-center" onClick="location.href='{% url 'post_detail' pk=post.pk|safe %}'">{{ post.content }}</td>
+                    <td class="truncate-content text-center" onClick="location.href='{% url 'post_detail' pk=post.pk|safe %}'">{{ post.name }}</td>
+                    <td class="text-center">{{ post.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if not 'm_id' in request.session %}
+    {% else %}
+    <button type="submit" class="btn btn-outline-primary" onclick="location.href='{% url 'post_create' %}'">글작성</button>
+    {% endif %}
+
+    {% include 'etc/footer.html' %}
+</div>
+{% endblock %}

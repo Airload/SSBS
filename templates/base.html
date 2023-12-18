@@ -1,0 +1,40 @@
+{% load static %}
+
+<html lang="ko">
+
+<head>
+        <script src='{%static "assets/js/color-modes.js" %}'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+                crossorigin="anonymous"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
+
+
+        <head>
+                <script src='{%static "js/main.js" %}'></script>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="icon" href="{% static 'pictures/stor.png' %}">
+                <title>세종시 상권분석</title>
+
+                <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+                        rel="stylesheet">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+                        rel="stylesheet">
+                <link href='{%static "assets/dist/css/bootstrap.min.css" %}' rel="stylesheet">
+                <link href="{% static 'bootstrap.min.css'%}" rel="stylesheet">
+
+                <link href="{% static 'style.css'%}" rel="stylesheet">
+
+
+
+        </head>
+        <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+        {% block content %}
+        {% endblock %}
+        <!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+</html>

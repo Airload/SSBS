@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% include 'etc/sidebar.html' %}
+    {% include 'etc/navbar.html' %}
+    <main>
+        <article>
+            <div class="container">
+                <div class="post-detail-container">
+                    <h1 class="post-title">{{ post.title }}</h1>
+                    <hr>
+                    <span>{{ post.created_at }}</span>
+                    <hr>
+                    <p class="post-name">작성자: {{ post.name }}</p>
+                    <hr>
+                    <div class="post-content">{{ post.content }}</div>
+                </div>
+                <div class="col-lg-12 loginbttm">
+                    <div class="col-lg-6 signup-btm signup-button">
+                        {% if request.session.m_name == post.name %}
+                        <button type="button" class="btn btn-outline-primary"
+                            onclick="location.href='{% url 'post_edit' pk=post.pk|safe %}'">글수정하기</button>
+                        {% endif %}
+                        {% if request.session.m_name == post.name %}
+                        <button type="button" class="btn btn-outline-primary"
+                            onclick="location.href='{% url 'post_delete' pk=post.pk|safe %}'">글삭제하기</button>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="col-lg-6 login-btm login-button">
+                        <button type="button" class="btn btn-outline-primary" onclick="location.href='{% url 'post_list' %}'">목록으로
+                            돌아가기</button>
+                    </div>
+            
+                </div>
+            </div>
+            
+        </article>
+
+    </main>
+    
+    <br>
+    <br>
+
+    {% include 'etc/footer.html' %}
+</div>
+{% endblock %}
