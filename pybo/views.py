@@ -12,7 +12,5 @@ def map(request):
 def data(request):
     return render(request, 'pybo/data.html')
 
-
-
 def files(request):
     return render(request, 'etc/files_list.html')
