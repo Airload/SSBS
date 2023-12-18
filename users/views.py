@@ -28,7 +28,7 @@ def member_reg(request):
                 member_id=member_id, passwd=passwd, name=name, email=email, usage_flag='y',
                 reg_date=datetime.now(), update_date=datetime.now())
             messages.success(request, f'{name}님 회원가입 되었습니다.')
-            return redirect('/pybo/')
+            return redirect('index')
 
 
 
@@ -53,7 +53,7 @@ def member_login(request):
             # OK - 로그인
             request.session['m_id'] = member_id
             request.session['m_name'] = rs.name
-            return redirect('/pybo/')
+            return redirect('index')
 
         else:
 
@@ -63,4 +63,4 @@ def member_login(request):
 
 def member_logout(request):
     request.session.flush()
-    return redirect('/pybo/')
+    return redirect('index')
