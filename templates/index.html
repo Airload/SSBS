@@ -2,6 +2,35 @@
 {% load static %}
 {% block content %}
 
+<style>
+.back-map{
+  background-image: url('{%static "pictures/map.png" %}');
+}
+.back-data{
+  background-image: url('{%static "pictures/data.jpg" %}');
+}
+.back-report{
+  background-image: url('{%static "pictures/report.png" %}');
+}
+  .custom-div {
+      /* 다양한 배경 속성을 사용하여 스타일을 지정할 수 있습니다. */
+      background-size: cover; /* 이미지를 커버하도록 조정 */
+      background-position: center; /* 이미지를 가운데 정렬 */
+      /* 다른 스타일 속성들을 필요에 따라 추가할 수 있습니다. */
+      /* 예: width, height, padding, margin 등 */
+      position: relative;
+      isolation: isolate;
+
+  }
+  .custom-div ::after {
+    content: '';
+  position: absolute;
+  background: white;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.4;
+  }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,33 +72,30 @@
     {% include 'etc/sidebar.html' %}
     {% include 'etc/navbar.html' %}
     <div class="container" id="featured-1" data-page="page1" onclick="moveToAnotherPage(this)">
-      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary style">
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary back-map custom-div">
         <div class="col-md-6 p-lg-5 mx-auto my-5">
           <h1 class="display-3 fw-bold">세상 Map</h1>
           <h3 class="fw-normal text-muted mb-3">세종시 상권 위치를 지도에 표기했습니다.</h3>
         </div>
-        <div class="product-device shadow-sm d-none d-md-block"></div>
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+
       </div>
     </div>
     <div class="container" id="featured-2" data-page="page2" onclick="moveToAnotherPage(this)">
-      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary back-data custom-div">
         <div class="col-md-6 p-lg-5 mx-auto my-5">
           <h1 class="display-3 fw-bold">세상 Data</h1>
           <h3 class="fw-normal text-muted mb-3">세종시 지역별 데이터를 한눈에 보기 쉽게 시각화했습니다.</h3>
         </div>
-        <div class="product-device shadow-sm d-none d-md-block"></div>
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+
       </div>
     </div>
     <div class="container" id="featured-3" data-page="page3" onclick="moveToAnotherPage(this)">
-      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary back-report custom-div">
         <div class="col-md-6 p-lg-5 mx-auto my-5">
           <h1 class="display-3 fw-bold">세상 Report</h1>
           <h3 class="fw-normal text-muted mb-3">세종시 지역별 상권 데이터에 관한 보고서입니다.</h3>
         </div>
-        <div class="product-device shadow-sm d-none d-md-block"></div>
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+
       </div>
     </div>
     <div class="container py-3">
