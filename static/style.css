@@ -7,6 +7,9 @@ body {
   strong{
     font-size: 20px;
 }
+a {  text-align: center;  text-decoration: none; /* 링크의 밑줄 제거 */  color: inherit; /* 링크의 색상 제거 */}
+
+
 .container {
     max-width: 1100px;
   }
@@ -480,7 +483,7 @@ input:focus {
 .footer-box{display: flex;flex-flow: column;justify-content: center;}
 .footer-box-box{height: auto;margin: 10px 0px 10px 0px;font-size: 12px;color:#192E61;}
 .footer-box div .logo{color:#192E61}
-.logo{font-weight: 800;font-size: 30px;color: #192E61;border:none;letter-spacing: -3px;text-decoration: none;color: #f9f9f9;}
+.logo{font-weight: 800;font-size: 30px;  color: #192E61;border:none;letter-spacing: -3px; text-decoration: none;}
 /* /footer css*/
 .product-device {
   position: absolute;
@@ -542,4 +545,8 @@ input:focus {
     z-index: -1;
     inset: 0;
     opacity: 0.4;
+    }
+
+    .footer-box-box a.logo:hover {
+        text-decoration: none;
     }
